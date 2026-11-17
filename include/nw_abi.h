@@ -68,7 +68,8 @@ struct nw_wifi_events {
 void nw_wifi_set_events(const struct nw_wifi_events *ev);
 int nw_wifi_scan(const uint8_t *ssid, size_t len);                       /* ssid may be NULL (all networks) */
 int nw_wifi_bss_count(void);
-int nw_wifi_bss_get(int i, struct nw_bss_info *out);                     /* 0 on success */
+int nw_wifi_bss_get(int i, struct nw_bss_info *out);                     /* 0 on success; age_ms is taken at this call: the time since the
+                                                                          * network was last heard, sleep included; 0 for the joined one */
 int nw_wifi_connect(const uint8_t *ssid, size_t len, const uint8_t *bssid, const char *pass, size_t plen);   /* pass NULL: open network */
 void nw_wifi_disconnect(void);
 void nw_wifi_power(int enabled);                  /* queue radio on/off on the wireless worker */
